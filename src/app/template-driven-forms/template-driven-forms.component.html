@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <form #newForm="ngForm" style="border: 3px solid black; padding: 10px">
+    <div class="form-group">
+      <label>form-1 validity is: <span style="color: red"*ngIf="form2.dirty && form21.dirty && form22.dirty && form4.dirty && form41.dirty; else elseBlock">true</span><ng-template #elseBlock >false</ng-template></label>
+    </div>
+    <div class="m-2" style="border: 3px solid red; padding: 10px">
+    <ng-form #form2="ngForm">
+      <div class="form-group">
+        <label for="form2">form-2 validity is: <span style="color: red" *ngIf="form2.dirty && form21.dirty && form22.dirty; else elseBlock">true</span><ng-template #elseBlock >false</ng-template></label>
+        <input type="text" class="form-control" id="form2" name="form2" [(ngModel)]="form2a">
+      </div>
+      <div class="m-2" style="border: 3px solid red; padding: 10px">
+      <ng-form #form21="ngForm">
+        <div class="form-group">
+          <label for="form21">form-2.1 validity is: <span style="color: red">{{form21.dirty}}</span></label>
+          <input type="text" class="form-control" id="form21" name="form21" [(ngModel)]="form21a">
+        </div>
+      </ng-form>
+      </div>
+      <div class="m-2" style="border: 3px solid red; padding: 10px">
+      <ng-form #form22="ngForm">
+        <div class="form-group">
+          <label for="form22">form-2.2 validity is: <span style="color: red">{{form22.dirty}}</span> </label>
+          <input type="text" class="form-control" id="form22" name="form22" [(ngModel)]="form22a">
+        </div>
+      </ng-form>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="toggle =! toggle">Toggle form-3</button>
+      <app-toggle *ngIf = "toggle"></app-toggle>
+    </ng-form>
+      <div class="m-2" style="border: 3px solid green; padding: 10px">
+        <ng-form #form4="ngForm">
+          <div class="form-group">
+            <label for="form4">form-4 validity is: <span style="color: red" *ngIf="form4.dirty && form41.dirty; else elseBlock">true</span></label>
+            <input type="text" class="form-control" id="form4" name="form4" [(ngModel)]="form4a">
+          </div>
+          <div class="m-2" style="border: 3px solid green; padding: 10px">
+            <ng-form #form41="ngForm">
+              <div class="form-group">
+                <label for="form41">form-4.1 validity is: <span style="color: red">{{form41.dirty}}</span></label>
+                <input type="text" class="form-control" id="form41" name="form41" [(ngModel)]="form41a">
+              </div>
+            </ng-form>
+          </div>
+        </ng-form>
+      </div>
+    </div>
+  </form>
+</div>
